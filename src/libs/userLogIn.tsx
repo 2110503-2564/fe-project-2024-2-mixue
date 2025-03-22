@@ -10,9 +10,13 @@ export default async function userLogin(userEmail:string, userPassword:string) {
         }),
     })
     
-    if(!response.ok) {
-        throw new Error("Failed to log-in")
+    const data = await response.json(); 
+
+    if (!response.ok || !data.success) {
+      throw new Error(data.message || "Fail to login");
+
+      
     }
 
-    return await response.json()
+return data;
 }

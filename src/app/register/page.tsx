@@ -22,6 +22,7 @@ export default function RegisterPage() {
       setMessage(`User registered successfully! Welcome, ${result.name}`);
       setIsRegistered(true);
     } catch (error: any) {
+      console.log(error)
       setMessage(error.message);
     }
   };

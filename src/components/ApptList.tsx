@@ -8,6 +8,7 @@ export default async function ApptList({ apptsJson }: { apptsJson: Promise<ApptJ
 
   
    const apptJsonReady = await apptsJson;
+
     
     return (
         <div className="mr-2 ml-2">

@@ -5,7 +5,9 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
+      <div className='z-10'>
         <Banner/>
+        </div>
     </main>
   );
 }
