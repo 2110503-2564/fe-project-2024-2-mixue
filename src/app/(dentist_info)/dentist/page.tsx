@@ -1,10 +1,7 @@
-
 import { Suspense } from "react";
 import getDentists from "@/libs/getDentists";
 import DentistList from "@/components/DentistList";
 import LinearProgress from "@mui/material/LinearProgress";
-
-
 
 export default function Dentist() {
     const dentists = getDentists(); 

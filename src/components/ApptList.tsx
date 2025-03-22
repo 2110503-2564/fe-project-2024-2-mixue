@@ -23,19 +23,19 @@ export default function ApptList({ apptsJson,token }: { apptsJson: any,token:any
     return (
         <div className="mr-2 ml-2">
         <div className="flex flex-row justify-center mt-3 ">
-            <button className="p-2 px-6 m-4 rounded-lg bg-red-500 text-white font-poppins text-xl shadow-lg 
-                 hover:bg-red-800 transition duration-300 disabled:opacity-50"
+            <button className="p-2 px-6 m-4 rounded-lg bg-teal-500 text-white font-poppins text-xl shadow-lg 
+                 hover:bg-teal-800 transition duration-300 disabled:opacity-50"
                  onClick={() => setShowing("all")}
                  >
             All appointments 
             </button>
-            <button className="p-2 px-6 m-4 rounded-lg bg-red-500 text-white font-poppins text-xl shadow-lg 
-                 hover:bg-red-800 transition duration-300 disabled:opacity-50"
+            <button className="p-2 px-6 m-4 rounded-lg bg-teal-500 text-white font-poppins text-xl shadow-lg 
+                 hover:bg-teal-800 transition duration-300 disabled:opacity-50"
                  onClick={() => setShowing("completed")}>
                 Complete
             </button>
-            <button className="p-2 px-6 m-4 rounded-lg bg-red-500 text-white font-poppins text-xl shadow-lg 
-                 hover:bg-red-800 transition duration-300 disabled:opacity-50"
+            <button className="p-2 px-6 m-4 rounded-lg bg-teal-500 text-white font-poppins text-xl shadow-lg 
+                 hover:bg-teal-800 transition duration-300 disabled:opacity-50"
                  onClick={() => setShowing("upcoming")}>
                 Upcoming
             </button>
@@ -77,8 +77,8 @@ export default function ApptList({ apptsJson,token }: { apptsJson: any,token:any
                 <div>
                 <button
                     onClick={()=>router.push(`/appointment/${appt._id}`)}
-                    className="p-3 px-6 m-4 rounded-lg bg-red-500 text-white font-poppins text-xl shadow-lg 
-                    hover:bg-red-800 transition duration-300 disabled:opacity-50">
+                    className="p-3 px-6 m-4 rounded-lg bg-teal-500 text-white font-poppins text-xl shadow-lg 
+                    hover:bg-teal-800 transition duration-300 disabled:opacity-50">
                 Details
                 </button>
 

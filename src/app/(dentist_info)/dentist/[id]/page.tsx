@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import getDentist from '@/libs/getDentist';
 import Link from "next/link";
@@ -7,12 +6,9 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 import DeleteButton from "@/components/DeleteButton";
 
 export default async function DentistDetail({params}: {params:{id:string}}){
-
-
-const dentistDetail = await getDentist(params.id);
-const session = await getServerSession(authOptions);
-
-
+    const dentistDetail = await getDentist(params.id);
+    const session = await getServerSession(authOptions);
+    // console.log(session)
     return(
         <div className="text-center p-5">
            <h1 className="text-3xl font-bold">{dentistDetail.data.name}</h1>
@@ -26,6 +22,7 @@ const session = await getServerSession(authOptions);
                     <div className="text-md mx-5">Area of Expertise {dentistDetail.data.areaOfExpertise}</div>
                     <div className="text-md mx-5">Year of Experience: {dentistDetail.data.yearOfEx} years</div>
               
+
                     <Link href={`/booking?id=${dentistDetail.data.id}&name=${dentistDetail.data.name}`}>
                         <button className="p-3 px-6 m-4  rounded-lg  
                                 bg-[#0D9488] text-white font-poppins text-xl shadow-lg 
@@ -35,6 +32,7 @@ const session = await getServerSession(authOptions);
                         
                     </Link>
 
+            {session?.user.data.role==='admin'?
                     <Link href={`/dentist/${params.id}/appointment`}>
                         <button className="p-3 px-6 m-4  rounded-lg  
                                 bg-cyan-500 text-white font-poppins text-xl shadow-lg 
@@ -42,8 +40,8 @@ const session = await getServerSession(authOptions);
                             Dentist Appointment List
                         </button>
                         
-                    </Link>
-           
+                    </Link>:""
+}
          
                     {session?.user.data.role =='admin' ? 
                     <>

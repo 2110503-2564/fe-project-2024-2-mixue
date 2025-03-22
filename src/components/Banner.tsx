@@ -29,7 +29,7 @@ export default function Banner () {
         <p>Book your perfect dental appointment effortlessly and keep your smile shining bright!</p>
 
         {
-            session? <div className="z-50 absolute top-8 right-10 text-cyan-400 text-3xl font-semibold">Welcome {session.user?.data.name}</div>
+            session? <div className="z-50 absolute top-8 right-10 text-cyan-800 text-3xl font-semibold">Welcome {session.user?.data.name}</div>
             :null
 
         }
