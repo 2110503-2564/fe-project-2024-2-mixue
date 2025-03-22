@@ -46,7 +46,17 @@ const session = await getServerSession(authOptions);
            
          
                     {session?.user.data.role =='admin' ? 
-                    <DeleteButton id={params.id} token={session.user.token} /> : ""}
+                    <>
+                        <Link href={`/dentist/${params.id}/update`}>  
+                            <button className="p-3 px-6 m-4 rounded-lg  
+                                    bg-yellow-500 text-white font-poppins text-xl shadow-lg   
+                                    hover:bg-yellow-600 transition duration-300">  
+                                Update Dentist  
+                            </button>  
+                        </Link> 
+                        <DeleteButton id={params.id} token={session.user.token} />
+                    </>
+                     : ""}
                 </div>
             </div>
             

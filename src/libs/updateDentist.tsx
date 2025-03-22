@@ -1,10 +1,28 @@
-export default async function getDentist(id:string) {
-    console.log("dentist: "+id)
-    const response = await fetch(`${process.env.BACKEND_URL}/api/v1/dentists/${id}`);
-    if(!response.ok){
-        throw new Error("Failed to fetch dentist");
-    }
+export default async function updateDentist(  
+    id: string,  
+    name: string,  
+    year: number,  
+    area: string,  
+    token: string  
+) {  
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/dentists/${id}`, {  
+        method: "PUT",  
+        headers: {  
+            "Content-Type": "application/json",  
+            authorization: `Bearer ${token}`,  
+        },  
+        body: JSON.stringify({  
+            name: name,  
+            yearOfEx: year,  
+            areaOfExpertise: area  
+        }),  
+    });  
 
-    return await response.json();
-}
+    const data = await response.json();  
 
+    if (!response.ok || !data.success) {  
+        throw new Error(data.message || "Failed to update dentist");  
+    }  
+
+    return data;  
+}  
