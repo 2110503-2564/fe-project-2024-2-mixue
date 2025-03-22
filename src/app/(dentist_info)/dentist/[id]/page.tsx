@@ -12,6 +12,7 @@ export default async function DentistDetail({params}: {params:{id:string}}){
 const dentistDetail = await getDentist(params.id);
 const session = await getServerSession(authOptions);
 
+
     return(
         <div className="text-center p-5">
            <h1 className="text-3xl font-bold">{dentistDetail.data.name}</h1>
@@ -25,11 +26,20 @@ const session = await getServerSession(authOptions);
                     <div className="text-md mx-5">Area of Expertise {dentistDetail.data.areaOfExpertise}</div>
                     <div className="text-md mx-5">Year of Experience: {dentistDetail.data.yearOfEx} years</div>
               
-                    <Link href={`/reservation?id=${dentistDetail.data.id}&name=${dentistDetail.data.name}`}>
+                    <Link href={`/booking?id=${dentistDetail.data.id}&name=${dentistDetail.data.name}`}>
                         <button className="p-3 px-6 m-4  rounded-lg  
                                 bg-[#0D9488] text-white font-poppins text-xl shadow-lg 
                                 hover:bg-[#0F766E] transition duration-300">
                             Make Reservation
+                        </button>
+                        
+                    </Link>
+
+                    <Link href={`/dentist/${params.id}/appointment`}>
+                        <button className="p-3 px-6 m-4  rounded-lg  
+                                bg-cyan-500 text-white font-poppins text-xl shadow-lg 
+                                hover:bg-cyan-700 transition duration-300">
+                            Dentist Appointment List
                         </button>
                         
                     </Link>

@@ -57,7 +57,9 @@ export default function DentistForm() {
                 <h1 className="mt-4 text-green-500">Your account has been created successfully!</h1>
                 <button
                   type="button" 
-                  onClick={() => router.push("/dentist")}  // Not a form submission, so "button" instead of "submit"
+                  onClick={() => {router.push("/dentist");
+                    router.refresh(); }
+                  }  // Not a form submission, so "button" instead of "submit"
                   className="bg-blue-600 text-white p-3 rounded w-full mt-11
                     hover:bg-blue-800 shadow-xl 
                     hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all duration-100">
