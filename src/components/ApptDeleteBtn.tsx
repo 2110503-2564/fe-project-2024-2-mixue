@@ -30,7 +30,7 @@ export default function ApptDeleteBtn({ id, token }: { id: string; token: any })
   return (
     <button
       onClick={handleDelete} 
-      className="p-3 px-6 m-4 rounded-lg bg-red-500 text-white font-poppins text-xl shadow-lg 
+      className="p-3 px-10 m-4 rounded-lg bg-red-500 text-white font-poppins text-xl shadow-lg 
                  hover:bg-red-800 transition duration-300 disabled:opacity-50"
       disabled={isDeleting} 
     >

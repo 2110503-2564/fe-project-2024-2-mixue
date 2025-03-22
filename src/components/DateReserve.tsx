@@ -4,6 +4,8 @@ import { DatePicker, TimePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { Dayjs } from 'dayjs';
 import { useState } from 'react';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 export default function DateReserve({ onDateChange }: { onDateChange: (date: Dayjs | null) => void }) {
     const [date, setDate] = useState<Dayjs | null>(null);
@@ -33,7 +35,8 @@ export default function DateReserve({ onDateChange }: { onDateChange: (date: Day
                     label="Select Date"
                     value={date}
                     onChange={handleDateChange}
-                    className="border p-2 rounded"
+                    slots={{ openPickerIcon: CalendarTodayIcon }}
+        
                 />
                 {/* Time Picker */}
                 <TimePicker
@@ -41,7 +44,8 @@ export default function DateReserve({ onDateChange }: { onDateChange: (date: Day
                     value={time}
                     onChange={handleTimeChange}
                     ampm={false} // Set to true for 12-hour format
-                    className="border p-2 rounded"
+                    slots={{ openPickerIcon: AccessTimeIcon }}
+              
                 />
             </LocalizationProvider>
         </div>

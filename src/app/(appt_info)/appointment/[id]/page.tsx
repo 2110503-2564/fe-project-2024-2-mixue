@@ -15,21 +15,22 @@ export default async function ApptDetail({params}: {params:{id:string}}){
 
     console.log(appt)
     return(
-        <div className="text-center p-5 flex flex-col">
+        <div className="flex justify-center items-start px-5 py-10 mx-6">
+  <div className="w-full max-w-screen-2xl flex flex-row gap-8">
             
-            <div className="flex flex-row my-5">
+
               
                 <Image src={'/img/denPic.png'}
                     alt= 'veneu img'
                     width={0} height={0} sizes ='100vw'
-                    className = 'rounded-lg w-[30%]'/>
+                    className = 'rounded-lg w-[40%]'/>
 
                     <div className="flex flex-col m-3 gap-3 ">
                         <div className="flex flex-row gap-7">
                             <h1 className="font-bold text-4xl mr-2">{format(new Date(appt.data.apptDate), "dd/MM/yyyy")}</h1>
                             <h1 className="font-bold text-3xl ">{format(new Date(appt.data.apptDate), "hh:mm a ")}</h1>
                     </div>
-                        <div className="bg-slate-100 px-20 pt-5 pb-6 rounded">
+                        <div className="bg-blue-100 px-20 pt-5 pb-6 rounded-xl">
                         <h1 className="font-bold text-3xl mb-2">Dentist Detail</h1>
                             <table className=" table-auto border-separte border-spacing-4">
                             <tbody>
@@ -53,13 +54,13 @@ export default async function ApptDetail({params}: {params:{id:string}}){
                     
                         </div>
 
-                        <div className="bg-slate-100 px-20 pt-5 pb-6">
-                        <h1 className="font-bold text-3xl mb-2">Patitent Detail</h1>
-                        <table className=" table-auto border-separte border-spacing-4">
+                        <div className="bg-red-100 px-20 pt-5 pb-6 rounded-xl">
+                        <h1 className="font-bold text-3xl mb-2">Patient Detail</h1>
+                        <table className=" table-auto border-separte border-spacing-4 ">
                         <tbody>
 
                             <tr>
-                                <td className="font-semibold">Paitient: </td>
+                                <td className="font-semibold">Patient: </td>
                                 <td className="px-5">{appt.data.user.name}</td>
                             </tr>
                             <tr>

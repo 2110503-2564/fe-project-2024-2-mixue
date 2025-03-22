@@ -54,7 +54,7 @@ export default function DentistForm() {
               {message && <p className="mt-4 text-green-500">{message}</p>}
             </div>: 
                 <div className="text-center">
-                <h1 className="mt-4 text-green-500">Your account has been created successfully!</h1>
+                <h1 className="mt-4 text-green-500">Dentist has been created successfully!</h1>
                 <button
                   type="button" 
                   onClick={() => {router.push("/dentist");

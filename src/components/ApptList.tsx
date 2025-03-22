@@ -42,7 +42,11 @@ export default function ApptList({ apptsJson,token }: { apptsJson: any,token:any
         </div>
 
             <div className="flex flex-col flex-wrap mt-0 pt-1 p-10 justify-center">
-            {
+            { apptJsonReady?.data?.filter((appt: Appt) =>
+                showing === "all" ? true : appt.status === showing).length===0?
+                <h2 className="text-center text-gray-500 text-xl font-medium mt-4">
+                    There is no appointment</h2>
+                :(
             apptJsonReady?.data?.filter((appt: Appt) =>
                 showing === "all" ? true : appt.status === showing).map((appt:Appt) => (  
                             
@@ -84,7 +88,7 @@ export default function ApptList({ apptsJson,token }: { apptsJson: any,token:any
 
                 </div>
                 </div>
-            ))
+            )))
             
             }
         </div>

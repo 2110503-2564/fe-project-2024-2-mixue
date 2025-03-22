@@ -34,8 +34,8 @@ export default function Banner () {
 
         }
 
-        <button className="p-3 px-6 m-4 z-30 rounded-lg absolute bottom-8 right-20 
-        bg-[#0D9488] text-white font-poppins text-xl shadow-lg 
+        <button className="p-3 px-6 m-4 z-30 rounded-lg absolute bottom-20 right-28 font-semibold font-3xl
+        bg-secondary text-white font-poppins text-xl shadow-lg 
         hover:bg-[#0F766E] transition duration-300"
         onClick={(e)=>{e.stopPropagation(); 
         router.push('/dentist');}}>
