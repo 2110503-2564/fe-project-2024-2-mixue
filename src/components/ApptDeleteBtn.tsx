@@ -1,26 +1,27 @@
 "use client";
 
-import deleteDentist from "@/libs/deleteDentist";
 import { useState } from "react";
 import { useRouter } from "next/navigation"; 
+import deleteAppt from "@/libs/deleteAppt";
 
-export default function DeleteButton({ id, token }: { id: string; token: any}) {
+export default function ApptDeleteBtn({ id, token }: { id: string; token: any }) {
   const [isDeleting, setIsDeleting] = useState(false);
   const router = useRouter();
 
   async function handleDelete() {
-    const confirmDelete = window.confirm("Are you sure you want to delete this dentist?");
+    const confirmDelete = window.confirm("Are you sure you want to delete this Appointment?");
     if (!confirmDelete) return;
 
     setIsDeleting(true);
 
     try {
-        await deleteDentist(id, token);
-        alert("Dentist deleted successfully!");
-        router.push("/dentist"); 
-        router.refresh(); 
+        await deleteAppt(id, token);
+        alert("Appointment deleted successfully!");
+        router.push('/appointment')
+        router.refresh();
+     
       } catch (error) {
-        alert("Failed to delete dentist.");
+        alert("Failed to delete Appointment.");
       }
 
     setIsDeleting(false);

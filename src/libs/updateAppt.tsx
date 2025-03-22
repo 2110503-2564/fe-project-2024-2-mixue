@@ -1,15 +1,14 @@
-export default async function  addAppt(dentistId:string,date:any,userId:string,token:string) {
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/dentists/${dentistId}/appointments`,{
+export default async function  updateAppt(apptId:string,date:any,token:any) {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/appointments/${apptId}`,{
     
-        method: "POST",
+        method: "PUT",
         headers:{
             "Content-Type": "application/json",
             authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-            apptDate: date,
-            user:userId
+            apptDate: date
         }),
 
    })

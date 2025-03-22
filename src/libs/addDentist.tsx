@@ -1,5 +1,5 @@
 
-export default async function addDentist(name:string, year:number, area:string,token:string) {
+export default async function addDentist(name:string, year:number, area:string,token:any) {
 
    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/dentists`,{
     

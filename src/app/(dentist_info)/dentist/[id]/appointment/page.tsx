@@ -14,8 +14,9 @@ export default async function Appt({params}: {params:{id:string}}) {
   }
 
 
-  const appts =  getApptsforDentist(params.id);
+  const appts =  await getApptsforDentist(params.id);
 
+  console.log(appts)
   if (!appts) {
     return (
       <div className="text-center text-red-500">

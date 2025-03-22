@@ -13,7 +13,7 @@ export default async function Appt() {
   }
 
 
-  const appts =  getAppts();
+  const appts = await getAppts();
 
   if (!appts) {
     return (

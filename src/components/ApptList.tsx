@@ -1,20 +1,50 @@
 
-
+'use client'
 import { format } from "date-fns"; 
 import { Appt, ApptJson } from "../../interfaces"; // Import the correct interfaces
+import ApptDeleteBtn from "./ApptDeleteBtn";
+import { useState } from "react";
+import { useRouter } from 'next/navigation';
 
+export default function ApptList({ apptsJson,token }: { apptsJson: any,token:any }) {
 
-export default async function ApptList({ apptsJson }: { apptsJson: Promise<ApptJson> }) {
+    const router = useRouter();
+    const [showing,setShowing] = useState("all")
+  
+   
+  const apptJsonReady = typeof apptsJson?.value === "string"
+  ? JSON.parse(apptsJson.value)
+  : apptsJson;
+
+   console.log(apptJsonReady)
+  
 
   
-   const apptJsonReady = await apptsJson;
-
-    
     return (
         <div className="mr-2 ml-2">
+        <div className="flex flex-row justify-center mt-3 ">
+            <button className="p-2 px-6 m-4 rounded-lg bg-red-500 text-white font-poppins text-xl shadow-lg 
+                 hover:bg-red-800 transition duration-300 disabled:opacity-50"
+                 onClick={() => setShowing("all")}
+                 >
+            All appointments 
+            </button>
+            <button className="p-2 px-6 m-4 rounded-lg bg-red-500 text-white font-poppins text-xl shadow-lg 
+                 hover:bg-red-800 transition duration-300 disabled:opacity-50"
+                 onClick={() => setShowing("completed")}>
+                Complete
+            </button>
+            <button className="p-2 px-6 m-4 rounded-lg bg-red-500 text-white font-poppins text-xl shadow-lg 
+                 hover:bg-red-800 transition duration-300 disabled:opacity-50"
+                 onClick={() => setShowing("upcoming")}>
+                Upcoming
+            </button>
+        </div>
 
             <div className="flex flex-col flex-wrap mt-0 pt-1 p-10 justify-center">
-            {apptJsonReady.data.map((appt:Appt) => (  
+            {
+            apptJsonReady?.data?.filter((appt: Appt) =>
+                showing === "all" ? true : appt.status === showing).map((appt:Appt) => (  
                             
                 <div className="bg-soft hover:bg-accent 
                             px-20 pt-5 pb-6 m-3 rounded-xl 
@@ -44,9 +74,19 @@ export default async function ApptList({ apptsJson }: { apptsJson: Promise<ApptJ
                      
                     </tbody>
                 </table>
+                <div>
+                <button
+                    onClick={()=>router.push(`/appointment/${appt._id}`)}
+                    className="p-3 px-6 m-4 rounded-lg bg-red-500 text-white font-poppins text-xl shadow-lg 
+                    hover:bg-red-800 transition duration-300 disabled:opacity-50">
+                Details
+                </button>
 
                 </div>
-            ))}
+                </div>
+            ))
+            
+            }
         </div>
         </div>
     );

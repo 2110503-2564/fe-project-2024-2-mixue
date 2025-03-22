@@ -39,7 +39,7 @@ export default function Banner () {
         hover:bg-[#0F766E] transition duration-300"
         onClick={(e)=>{e.stopPropagation(); 
         router.push('/dentist');}}>
-            Select Venue
+            Select Dentist
 </button>
 
 

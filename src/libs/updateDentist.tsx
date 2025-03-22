@@ -3,7 +3,7 @@ export default async function updateDentist(
     name: string,  
     year: number,  
     area: string,  
-    token: string  
+    token: any  
 ) {  
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/dentists/${id}`, {  
         method: "PUT",  

@@ -1,31 +1,21 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 
-export default async function  addAppt(dentistId:string,date:any,userId:string,token:string) {
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/dentists/${dentistId}/appointments`,{
-    
-        method: "POST",
-        headers:{
-            "Content-Type": "application/json",
-            authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-            apptDate: date,
-            user:userId
-        }),
+export default async function deleteDentist(id:string,token:any) {
 
-   })
-    
-   const data = await response.json(); 
 
-    if (!response.ok || !data.success) {
-      throw new Error(data.message || "Fail to add appoinment");
-
-      
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/appointments/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
+  
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || "Failed to delete appointment");
     }
-
-return data;
-
-    
-}
+  
+    return await response.json();
+  }
+  

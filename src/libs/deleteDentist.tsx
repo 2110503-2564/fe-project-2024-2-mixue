@@ -1,6 +1,6 @@
 
 
-export default async function deleteDentist(id:string,token:string) {
+export default async function deleteDentist(id:string,token:any) {
 
 
   const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/dentists/${id}`, {
