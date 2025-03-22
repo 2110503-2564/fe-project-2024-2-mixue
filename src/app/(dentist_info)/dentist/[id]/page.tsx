@@ -2,7 +2,7 @@
 import Image from "next/image";
 import getDentist from '@/libs/getDentist';
 import Link from "next/link";
-
+import lin
 export default async function DentistDetail({params}: {params:{id:string}}){
 
 

@@ -4,6 +4,8 @@ import getDentists from "@/libs/getDentists";
 import DentistList from "@/components/DentistList";
 import LinearProgress from "@mui/material/LinearProgress";
 
+
+
 export default function Dentist() {
     const dentists = getDentists(); 
 
@@ -13,6 +15,10 @@ export default function Dentist() {
             <Suspense fallback={<p>Loading... <LinearProgress /></p>}>
                 <DentistList dentistsJson={dentists} /> 
             </Suspense>
+
+            {
+                
+            }
         </div>
     );
 }

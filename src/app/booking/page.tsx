@@ -43,7 +43,7 @@ export default async function Booking() {
                     </tbody>
                 </table>
             </div>
-           <BookingForm userId={profile.data._id} dentists={dentistJsonReady} userTo={session.user.token}>
+           <BookingForm userId={profile.data._id} dentists={dentistJsonReady} token={session.user.token}>
 
            </BookingForm>
                 </div>

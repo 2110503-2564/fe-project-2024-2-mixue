@@ -11,7 +11,7 @@ import utc from 'dayjs/plugin/utc';
 
 dayjs.extend(utc);
 
-export default function BookingForm({userId,dentists,userTo}:{userId:string, dentists:DentistJson,userTo:string}) {
+export default function BookingForm({userId,dentists,token}:{userId:string, dentists:DentistJson,token:string}) {
 
   const [dentist,setDentist] = useState("");
   const [date, setDate] = useState<Dayjs | null>(null);
@@ -26,7 +26,7 @@ export default function BookingForm({userId,dentists,userTo}:{userId:string, den
     try {
         const formattedDate = dayjs(date).utc().format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
     console.log(formattedDate);
-      await addAppt(dentist, formattedDate, userId,userTo);
+      await addAppt(dentist, formattedDate, userId,token);
       setBooked(true);
     } catch (error: any) {
       setMessage(error.message);

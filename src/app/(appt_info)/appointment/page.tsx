@@ -27,7 +27,7 @@ export default async function Appt() {
   return (
     <div>
       <h1 className="text-4xl font-bold text-center mt-9 mb-2">Appointments List</h1>
-      <ApptList apptsJson={appts} /> 
+      <ApptList apptsJson={appts} token={session.user.token} /> 
     </div>
   );
 }
