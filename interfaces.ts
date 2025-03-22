@@ -20,7 +20,7 @@ export interface ApptJson {
 
 export interface Appt{
     _id:string
-    date:Date
+    apptDate:Date
     user:User
     dentist:DentistList
     status:string

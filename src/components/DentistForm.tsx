@@ -12,7 +12,7 @@ export default function DentistForm() {
   const router = useRouter(); 
   const { data: session, status } = useSession();
 
-  console.log(session?.user.token)
+  const token = session?.user.token;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -22,7 +22,7 @@ export default function DentistForm() {
     e.preventDefault();
 
     try {
-      const result = await addDentist(formData.name, formData.year, formData.area, session?.user.token);
+      const result = await addDentist(formData.name, formData.year, formData.area, token);
       setMessage(`User registered successfully! Welcome, ${result.name}`);
       setComplete(true)
     } catch (error: any) {

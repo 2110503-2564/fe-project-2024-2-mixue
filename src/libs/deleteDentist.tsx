@@ -1,14 +1,20 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 
-export default async function deleteDentist(id:string) {
 
-    const response = await fetch(`${process.env.BACKEND_URL}/api/v1/dentists/${id}`);
-   
-    if(!response.ok){
-        throw new Error("Failed to fetch dentist");
-    }
+export default async function deleteDentist(id:string,token:string) {
 
-    return await response.json();
+
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/dentists/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Authorization": `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.message || "Failed to delete dentist");
+  }
+
+  return await response.json();
 }
-

@@ -19,7 +19,7 @@ export default async function DentistList({ dentistsJson }: { dentistsJson: Prom
                     you can choose the perfect expert for your needs.
                 </h2>
 
-{session?.user.role==='admin'?
+{session?.user.data.role==='admin'?
                 <Link href={'/dentist/addDentist'}>
                 <button  className="bg-teal-600 text-white p-2 rounded w-1/5 mt-8 mb-3 mx-auto mx-auto block
                     hover:bg-teal-800 shadow-xl 

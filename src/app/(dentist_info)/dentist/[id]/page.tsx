@@ -2,12 +2,15 @@
 import Image from "next/image";
 import getDentist from '@/libs/getDentist';
 import Link from "next/link";
-import lin
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
+import DeleteButton from "@/components/DeleteButton";
+
 export default async function DentistDetail({params}: {params:{id:string}}){
 
 
 const dentistDetail = await getDentist(params.id);
-
+const session = await getServerSession(authOptions);
 
     return(
         <div className="text-center p-5">
@@ -30,6 +33,10 @@ const dentistDetail = await getDentist(params.id);
                         </button>
                         
                     </Link>
+           
+         
+                    {session?.user.data.role =='admin' ? 
+                    <DeleteButton id={params.id} token={session.user.token} /> : ""}
                 </div>
             </div>
             

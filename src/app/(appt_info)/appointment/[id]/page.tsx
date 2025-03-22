@@ -7,9 +7,6 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 
 export default async function ApptDetail({params}: {params:{id:string}}){
 
-    const session = await getServerSession(authOptions)
-    if(!session||!session.user.token)return null
-
     const dentistDetail = await getAppt(params.id);
     
     return(
