@@ -1,10 +1,22 @@
 
 'use client'
-import { format } from "date-fns"; 
+
 import { Appt, ApptJson } from "../../interfaces"; // Import the correct interfaces
 import ApptDeleteBtn from "./ApptDeleteBtn";
 import { useState } from "react";
 import { useRouter } from 'next/navigation';
+import { toZonedTime, format } from 'date-fns-tz';
+
+function convertUTCToBangkok(utcDate: Date) {
+   
+    const timeZone = 'Asia/Bangkok';
+
+    const zonedDate = toZonedTime(utcDate, timeZone);
+
+    const output = format(zonedDate, 'dd-MM-yyyy\u00A0\u00A0\u00A0\u00A0h:mm a', { timeZone });
+console.log(output)
+    return output;
+  }
 
 export default function ApptList({ apptsJson,token }: { apptsJson: any,token:any }) {
 
@@ -56,7 +68,7 @@ export default function ApptList({ apptsJson,token }: { apptsJson: any,token:any
                             transition-all duration-300 ease-in-out
                             shadow-md hover:shadow-xl">
 
-                <h1 className="font-bold text-3xl mb-2">{format(new Date(appt.apptDate), "hh:mm a - dd/MM/yyyy")}</h1>
+                <h1 className="font-bold text-3xl mb-2">{convertUTCToBangkok(appt.apptDate)}</h1>
                 <table className=" table-auto border-separte border-spacing-4">
                     <tbody>
                         <tr>

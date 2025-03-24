@@ -6,7 +6,18 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 import ApptDeleteBtn from "@/components/ApptDeleteBtn";
 import ApptUpdateBtn from "@/components/ApptUpdateBtn";
-import { format } from "date-fns"; 
+import { toZonedTime, format } from 'date-fns-tz';
+
+function convertUTCToBangkok(utcDate: Date) {
+   
+    const timeZone = 'Asia/Bangkok';
+
+    const zonedDate = toZonedTime(utcDate, timeZone);
+
+    const output = format(zonedDate, 'dd-MM-yyyy\u00A0\u00A0\u00A0\u00A0\u00A0h:mm a', { timeZone });
+console.log(output)
+    return output;
+  }
 
 export default async function ApptDetail({params}: {params:{id:string}}){
 
@@ -27,8 +38,8 @@ export default async function ApptDetail({params}: {params:{id:string}}){
 
                     <div className="flex flex-col m-3 gap-3 ">
                         <div className="flex flex-row gap-7">
-                            <h1 className="font-bold text-4xl mr-2">{format(new Date(appt.data.apptDate), "dd/MM/yyyy")}</h1>
-                            <h1 className="font-bold text-3xl ">{format(new Date(appt.data.apptDate), "hh:mm a ")}</h1>
+                            <h1 className="font-bold text-4xl mr-2">{convertUTCToBangkok(appt.data.apptDate)}</h1>
+                           
                     </div>
                         <div className="bg-blue-100 px-20 pt-5 pb-6 rounded-xl">
                         <h1 className="font-bold text-3xl mb-2">Dentist Detail</h1>
