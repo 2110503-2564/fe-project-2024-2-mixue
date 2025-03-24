@@ -39,7 +39,7 @@ export default function ApptUpdateBtn({ id, token }: { id: string; token: any}) 
   }
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center ">
       { isClick?
     <div className=" p-4 m-2 bg-[#FFF6D9] rounded ">
       <DateReserve onDateChange={setDate}></DateReserve>
@@ -56,7 +56,7 @@ export default function ApptUpdateBtn({ id, token }: { id: string; token: any}) 
     
     <button
     onClick={()=>setIsClick(true)} 
-    className="w-6/7 p-3 m-2 rounded-lg bg-yellow-500 text-white font-poppins text-xl shadow-lg px-24
+    className="w-60 p-3  rounded-lg bg-yellow-500 text-white font-poppins text-xl shadow-lg 
                      hover:bg-yellow-800 transition duration-300 disabled:opacity-50"
           disabled={isUpdating}
   >

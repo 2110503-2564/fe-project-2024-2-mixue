@@ -28,13 +28,15 @@ export default function ApptDeleteBtn({ id, token }: { id: string; token: any })
   }
 
   return (
+    <div className="flex justify-center ">
     <button
       onClick={handleDelete} 
-      className="p-3 px-10 m-4 rounded-lg bg-red-500 text-white font-poppins text-xl shadow-lg 
+      className="w-60 p-3 mb-4 rounded-lg bg-red-500 text-white font-poppins text-xl shadow-lg 
                  hover:bg-red-800 transition duration-300 disabled:opacity-50"
       disabled={isDeleting} 
     >
       {isDeleting ? "Deleting..." : "Delete"} 
     </button>
+    </div>
   );
 }

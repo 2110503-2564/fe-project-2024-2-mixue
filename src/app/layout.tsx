@@ -6,6 +6,7 @@ import { getServerSession } from "next-auth";
 import NextAuthProvider from "@/providers/NextAuthProvider";
 import ReduxProvider from "@/redux/ReduxProvider";
 import { authOptions } from "./api/auth/[...nextauth]/authOptions";
+import Footer from '@/components/footer';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default async function RootLayout({
         <NextAuthProvider session={session}>
           <TopMenu />
           {children}
+          <Footer/>
           </NextAuthProvider>
           </ReduxProvider>
         </body>

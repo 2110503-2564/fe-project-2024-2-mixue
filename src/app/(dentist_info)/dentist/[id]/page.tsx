@@ -27,7 +27,7 @@ export default async function DentistDetail({params}: {params:{id:string}}){
                         <button className="p-3 px-6 m-4  rounded-lg  
                                 bg-[#0D9488] text-white font-poppins text-xl shadow-lg 
                                 hover:bg-[#0F766E] transition duration-300">
-                            Make Reservation
+                            Book an Appointment
                         </button>
                         
                     </Link>
